@@ -24,4 +24,3 @@ jobs:
         uses: addnab/docker-run-action@v3
         with:
           image: ${{secrets.DOCKERHUB_USERNAME}}/webapp:latest
-          run: docker run
