@@ -12,13 +12,16 @@ jobs:
         name: Checkout
         uses: actions/checkout@v3
       -
-        name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
-      -
-        name: Build and push
+        name: Build iamge
         uses: docker/build-push-action@v3
         with:
           context: .
           file: ./Dockerfile.dev
           push: false
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/webapp:latest
+          tags: ${{secrets.DOCKERHUB_USERNAME}}/webapp:latest
+      - 
+        name: Run image
+        uses: addnab/docker-run-action@v3
+        with:
+          image: ${{secrets.DOCKERHUB_USERNAME}}/webapp:latest
+          run: docker run
