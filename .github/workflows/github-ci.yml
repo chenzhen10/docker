@@ -18,9 +18,10 @@ jobs:
           context: .
           file: ./Dockerfile.dev
           push: false
-          tags: ${{secrets.DOCKERHUB_USERNAME}}/webapp:latest
+          tags: timkim/webapp:latest
       - 
         name: Run image
         uses: addnab/docker-run-action@v3
         with:
-          image: ${{secrets.DOCKERHUB_USERNAME}}/webapp:latest
+          image: timkim/webapp:latest
+          run: npm run test
